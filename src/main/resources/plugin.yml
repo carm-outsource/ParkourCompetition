@@ -5,6 +5,8 @@ version: ${project.version}
 description: ${project.description}
 website: ${project.url}
 
+api-version: 1.18
+
 authors:
   - CarmJos
 
