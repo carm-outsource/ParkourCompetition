@@ -1,0 +1,12 @@
+main: ${project.code.package}.Main
+name: ${project.name}
+
+version: ${project.version}
+description: ${project.description}
+website: ${project.url}
+
+authors:
+  - CarmJos
+
+softdepend:
+  - PlaceholderAPI
