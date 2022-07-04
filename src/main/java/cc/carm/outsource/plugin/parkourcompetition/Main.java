@@ -6,9 +6,13 @@ import cc.carm.lib.mineconfiguration.bukkit.MineConfiguration;
 import cc.carm.outsource.plugin.parkourcompetition.command.PluginCommand;
 import cc.carm.outsource.plugin.parkourcompetition.conf.PluginConfig;
 import cc.carm.outsource.plugin.parkourcompetition.conf.PluginMessages;
+import cc.carm.outsource.plugin.parkourcompetition.data.DataBlockLocation;
+import cc.carm.outsource.plugin.parkourcompetition.data.DataCubeArea;
+import cc.carm.outsource.plugin.parkourcompetition.data.DataLocation;
 import cc.carm.outsource.plugin.parkourcompetition.listener.FireworkListener;
 import cc.carm.outsource.plugin.parkourcompetition.listener.GameListener;
 import cc.carm.outsource.plugin.parkourcompetition.manager.ParkourManager;
+import org.bukkit.configuration.serialization.ConfigurationSerialization;
 
 public class Main extends EasyPlugin {
 
@@ -24,6 +28,10 @@ public class Main extends EasyPlugin {
         instance = this;
 
         log("加载插件配置文件...");
+        ConfigurationSerialization.registerClass(DataLocation.class);
+        ConfigurationSerialization.registerClass(DataBlockLocation.class);
+        ConfigurationSerialization.registerClass(DataCubeArea.class);
+
         this.configProvider = MineConfiguration.from(this, "config.yml");
         this.configProvider.initialize(PluginConfig.class);
 
