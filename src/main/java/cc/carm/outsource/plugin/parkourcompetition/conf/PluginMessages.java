@@ -40,6 +40,9 @@ public class PluginMessages extends ConfigurationRoot {
 
     public static final class GAME {
 
+        public static final ConfiguredMessageList<BaseComponent[]> STARTED = list()
+                .defaults("&c&l无法参赛。 &f比赛已经开始了哦，欢迎下次参赛~")
+                .build();
 
         public static final ConfiguredMessageList<BaseComponent[]> JOIN = list()
                 .defaults("&a&l参赛成功！&f您将在游戏开始时传送到对应比赛地点。")

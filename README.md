@@ -4,11 +4,16 @@
 
 > 本项目由舰长 [迎风](https://space.bilibili.com/353986083) 委托本人为 **Purple Monkey** 服务器 (`play.pmmc.cc`) 跑酷比赛开发。
 
+## 指令
 
-## 功能
+玩家输入 `/ParkourCompetition` 即可参加/退出比赛。
+
+后台输入 `/ParkourCompetition` 即可开始比赛。
+
 
 ## 配置
 
+首次运行后，见生成的配置文件。
 
 ## 开源
 

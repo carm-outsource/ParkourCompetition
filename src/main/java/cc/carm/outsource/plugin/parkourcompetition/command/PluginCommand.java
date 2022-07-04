@@ -27,6 +27,11 @@ public class PluginCommand implements CommandExecutor {
             return true;
         }
 
+        if (parkour.isStarted()) {
+            PluginMessages.GAME.STARTED.send(player);
+            return true;
+        }
+
         if (parkour.getJoinedUUIDs().contains(player.getUniqueId())) {
             PluginMessages.GAME.QUIT.send(player);
             parkour.getJoinedUUIDs().remove(player.getUniqueId());
