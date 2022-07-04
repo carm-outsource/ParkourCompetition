@@ -42,11 +42,11 @@ public class GameListener extends EasyListener {
         PluginConfig.GAME.FINISH.TITLE.send(player, seconds);
         PluginMessages.GAME.FINISH.send(player, seconds, parkour.getFinishTime().size());
 
-        if (parkour.getFinishTime().size() > 3) {
-            player.teleport(PluginConfig.LOCATIONS.FINISH.getNotNull());
-            parkour.endGame();
-        } else {
+        if (parkour.getFinishTime().size() <= 3) {
             player.teleport(PluginConfig.LOCATIONS.PODIUM.getNotNull());
+            if (parkour.getFinishTime().size() == 3) parkour.endGame();
+        } else if (parkour.getFinishTime().size() > 3) {
+            player.teleport(PluginConfig.LOCATIONS.FINISH.getNotNull());
         }
 
     }
