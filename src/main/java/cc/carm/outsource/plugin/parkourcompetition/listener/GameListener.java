@@ -22,12 +22,12 @@ public class GameListener extends EasyListener {
     public GameListener(Plugin plugin) {
         super(plugin);
 
-        handleEvent(ServerCommandEvent.class)
-                .filter(e -> e.getSender() instanceof BlockCommandSender)
-                .handle(e -> {
-                    BlockCommandSender sender = (BlockCommandSender) e.getSender();
-                    Main.getInstance().log(sender.getBlock().getLocation().toString());
-                });
+//        handleEvent(ServerCommandEvent.class)
+//                .filter(e -> e.getSender() instanceof BlockCommandSender)
+//                .handle(e -> {
+//                    BlockCommandSender sender = (BlockCommandSender) e.getSender();
+//                    Main.getInstance().log(sender.getBlock().getLocation().toString());
+//                });
     }
 
     @EventHandler
