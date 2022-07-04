@@ -5,7 +5,9 @@ import cc.carm.outsource.plugin.parkourcompetition.Main;
 import cc.carm.outsource.plugin.parkourcompetition.conf.PluginConfig;
 import cc.carm.outsource.plugin.parkourcompetition.conf.PluginMessages;
 import cc.carm.outsource.plugin.parkourcompetition.manager.ParkourManager;
+import cc.carm.outsource.plugin.parkourcompetition.util.FireworkUtils;
 import me.block2block.hubparkour.api.events.player.ParkourPlayerFinishEvent;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.plugin.Plugin;
@@ -38,16 +40,18 @@ public class GameListener extends EasyListener {
         format.setMaximumFractionDigits(2);
         String seconds = format.format((double) cost / 1000D);
 
-        PluginConfig.GAME.FINISH.SOUND.playTo(player);
-        PluginConfig.GAME.FINISH.TITLE.send(player, seconds);
-        PluginMessages.GAME.FINISH.send(player, seconds, parkour.getFinishTime().size());
-
         if (parkour.getFinishTime().size() <= 3) {
-            player.teleport(PluginConfig.LOCATIONS.PODIUM.getNotNull());
+            Location loc = PluginConfig.LOCATIONS.PODIUM.getNotNull();
+            player.teleport(loc);
+            FireworkUtils.spawnFirework(loc);
             if (parkour.getFinishTime().size() == 3) parkour.endGame();
         } else if (parkour.getFinishTime().size() > 3) {
             player.teleport(PluginConfig.LOCATIONS.FINISH.getNotNull());
         }
+
+        PluginConfig.GAME.FINISH.SOUND.playTo(player);
+        PluginConfig.GAME.FINISH.TITLE.send(player, seconds);
+        PluginMessages.GAME.FINISH.send(player, seconds, parkour.getFinishTime().size());
 
     }
 
