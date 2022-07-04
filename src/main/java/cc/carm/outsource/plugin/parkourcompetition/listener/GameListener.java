@@ -8,8 +8,10 @@ import cc.carm.outsource.plugin.parkourcompetition.manager.ParkourManager;
 import cc.carm.outsource.plugin.parkourcompetition.util.FireworkUtils;
 import me.block2block.hubparkour.api.events.player.ParkourPlayerFinishEvent;
 import org.bukkit.Location;
+import org.bukkit.command.BlockCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.server.ServerCommandEvent;
 import org.bukkit.plugin.Plugin;
 
 import java.text.NumberFormat;
@@ -19,6 +21,13 @@ public class GameListener extends EasyListener {
 
     public GameListener(Plugin plugin) {
         super(plugin);
+
+        handleEvent(ServerCommandEvent.class)
+                .filter(e -> e.getSender() instanceof BlockCommandSender)
+                .handle(e -> {
+                    BlockCommandSender sender = (BlockCommandSender) e.getSender();
+                    Main.getInstance().log(sender.getBlock().getLocation().toString());
+                });
     }
 
     @EventHandler
@@ -51,8 +60,8 @@ public class GameListener extends EasyListener {
 
         PluginConfig.GAME.FINISH.SOUND.playTo(player);
         PluginConfig.GAME.FINISH.TITLE.send(player, seconds);
+        PluginMessages.GAME.FINISH_OTHER.broadcast(player.getName(), seconds, parkour.getFinishTime().size());
         PluginMessages.GAME.FINISH.send(player, seconds, parkour.getFinishTime().size());
-
     }
 
 }

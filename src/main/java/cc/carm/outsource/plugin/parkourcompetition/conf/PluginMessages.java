@@ -53,8 +53,12 @@ public class PluginMessages extends ConfigurationRoot {
                 .build();
 
         public static final ConfiguredMessageList<BaseComponent[]> FINISH = list()
-                .defaults("&e&l恭喜！&f您完成了本次跑酷比赛，总耗时 &6%(time)秒 &f，排名为 &6#%(index) &f！")
+                .defaults("&e&l恭喜！&f您完成了本次跑酷比赛，总用时 &6%(time)秒 &f，排名为 &6#%(index) &f！")
                 .params("time", "index").build();
+
+        public static final ConfiguredMessageList<BaseComponent[]> FINISH_OTHER = list()
+                .defaults("&f恭喜 &e&l%(player) &f作为 &6第%(index)名 &f完成了本次跑酷比赛，用时 &6%(time)秒 &f！")
+                .params("player", "time", "index").build();
 
 
         public static final ConfiguredMessageList<BaseComponent[]> END = list()
