@@ -28,20 +28,26 @@ public class PluginCommand implements CommandExecutor {
         }
 
         if (parkour.isStarted()) {
-            PluginMessages.GAME.STARTED.send(player);
-            return true;
-        }
 
-        if (parkour.getJoinedUUIDs().contains(player.getUniqueId())) {
-            PluginMessages.GAME.QUIT.send(player);
-            parkour.getJoinedUUIDs().remove(player.getUniqueId());
+            if (!parkour.getJoinedUUIDs().contains(player.getUniqueId())) {
+                PluginMessages.GAME.STARTED.send(player);
+            }
+
         } else {
-            PluginMessages.GAME.JOIN.send(player);
-            parkour.getJoinedUUIDs().add(player.getUniqueId());
-            player.teleport(PluginConfig.LOCATIONS.WAIT.getNotNull());
+
+            if (parkour.getJoinedUUIDs().contains(player.getUniqueId())) {
+                PluginMessages.GAME.QUIT.send(player);
+                parkour.getJoinedUUIDs().remove(player.getUniqueId());
+            } else {
+                PluginMessages.GAME.JOIN.send(player);
+                parkour.getJoinedUUIDs().add(player.getUniqueId());
+                player.teleport(PluginConfig.LOCATIONS.WAIT.getNotNull());
+            }
+
         }
 
-        return false;
+
+        return true;
     }
 
 

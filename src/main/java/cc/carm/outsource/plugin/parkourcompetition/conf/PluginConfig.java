@@ -117,7 +117,7 @@ public class PluginConfig extends ConfigurationRoot {
 
         @HeaderComment({"游戏区域的传送点"})
         public static final ConfiguredSerializable<Location> GAME = ConfiguredSerializable.of(
-                Location.class, new Location(Bukkit.getWorld("pmpc-1"), -87, 78, 82)
+                Location.class, new Location(Bukkit.getWorld("pmpc-1"), -87, 78, 82, -180, 0)
         );
 
         @HeaderComment("结束区域的传送点")

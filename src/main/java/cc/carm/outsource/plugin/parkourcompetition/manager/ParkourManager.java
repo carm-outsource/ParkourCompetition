@@ -47,8 +47,8 @@ public class ParkourManager {
 
         // 发送通知
         for (Player player : getJoinedPlayers()) {
-            PluginConfig.GAME.PREPARE.TITLE.send(player);
-            PluginConfig.GAME.PREPARE.SOUND.playTo(player);
+            PluginConfig.GAME.START.TITLE.send(player);
+            PluginConfig.GAME.START.SOUND.playTo(player);
         }
 
     }
@@ -78,11 +78,9 @@ public class ParkourManager {
 
         // 发送通知
         Object[] finalParams = params.toArray();
-        for (Player player : getJoinedPlayers()) {
-            PluginMessages.GAME.END.send(player, finalParams);
-            PluginConfig.GAME.END.SOUND.playTo(player);
-        }
 
+        PluginMessages.GAME.END.broadcast(finalParams);
+        PluginConfig.GAME.END.SOUND.playToAll();
     }
 
     public boolean isStarted() {
