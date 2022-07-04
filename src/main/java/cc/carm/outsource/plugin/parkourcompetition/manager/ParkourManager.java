@@ -20,7 +20,6 @@ public class ParkourManager {
     protected @Nullable Long startTime;
     protected boolean ended = false;
 
-
     public void prepareGame() {
 
         // 把空气替换为空气墙
