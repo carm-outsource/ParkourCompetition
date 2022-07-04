@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.plugin.Plugin;
 
+import java.text.NumberFormat;
 import java.util.UUID;
 
 public class GameListener extends EasyListener {
@@ -33,7 +34,9 @@ public class GameListener extends EasyListener {
         long cost = System.currentTimeMillis() - startTime;
         parkour.getFinishTime().put(uuid, cost);
 
-        String seconds = String.format("%02d", cost / 1000);
+        NumberFormat format = NumberFormat.getInstance();
+        format.setMaximumFractionDigits(2);
+        String seconds = format.format((double) cost / 1000D);
 
         PluginConfig.GAME.FINISH.SOUND.playTo(player);
         PluginConfig.GAME.FINISH.TITLE.send(player, seconds);

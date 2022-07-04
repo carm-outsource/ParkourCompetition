@@ -9,6 +9,7 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.Nullable;
 
+import java.text.NumberFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -61,6 +62,9 @@ public class ParkourManager {
 
         List<Object> params = new ArrayList<>();
 
+        NumberFormat format = NumberFormat.getInstance();
+        format.setMaximumFractionDigits(2);
+
         Iterator<Map.Entry<UUID, Long>> iterator = this.finishTime.entrySet().iterator();
         int i = 1;
         while (true) {
@@ -70,7 +74,7 @@ public class ParkourManager {
             params.add(Bukkit.getOfflinePlayer(entry.getKey()).getName());
 
             long cost = entry.getValue() - startTime;
-            params.add(String.format("%02d", cost / 1000));
+            params.add(format.format((double) cost / 1000D));
 
             i++;
             if (i > 3) break;
@@ -105,14 +109,6 @@ public class ParkourManager {
 
     public Map<UUID, Long> getFinishTime() {
         return finishTime;
-    }
-
-    public void finish(UUID uuid) {
-        if (!joinedPlayers.contains(uuid)) return;
-        if (startTime == null) return;
-
-        long cost = System.currentTimeMillis() - startTime;
-        finishTime.put(uuid, cost);
     }
 
 

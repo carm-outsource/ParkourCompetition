@@ -26,7 +26,7 @@ public class CountdownRunnable extends BukkitRunnable {
         timeConsumer.accept(fullTime - time);
         time++;
 
-        if (time >= fullTime) {
+        if (time > fullTime) {
             if (afterAll != null) afterAll.run();
             this.cancel();
         }
