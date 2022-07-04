@@ -21,7 +21,7 @@ public class PluginConfig extends ConfigurationRoot {
     public static final ConfigValue<Boolean> DEBUG = ConfiguredValue.of(Boolean.class, false);
 
     @HeaderComment({"在 HubParkour 插件中配置的跑酷ID"})
-    public static final ConfigValue<Integer> PARKOUR_ID = ConfiguredValue.of(Integer.class, 1);
+    public static final ConfigValue<Integer> PARKOUR_ID = ConfiguredValue.of(Integer.class, 5);
 
 
     @HeaderComment("游戏相关配置")
