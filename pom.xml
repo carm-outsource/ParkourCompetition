@@ -67,6 +67,11 @@
         </repository>
 
         <repository>
+            <id>hp-repo</id>
+            <url>https://nexus.block2block.me/repository/HubParkour/</url>
+        </repository>
+
+        <repository>
             <id>minebench-repo</id>
             <url>https://repo.minebench.de/</url>
         </repository>
@@ -92,14 +97,6 @@
         <dependency>
             <groupId>cc.carm.lib</groupId>
             <artifactId>easyplugin-command</artifactId>
-            <version>${easyplugin.version}</version>
-            <scope>compile</scope>
-            <optional>true</optional>
-        </dependency>
-
-        <dependency>
-            <groupId>cc.carm.lib</groupId>
-            <artifactId>easyplugin-githubchecker</artifactId>
             <version>${easyplugin.version}</version>
             <scope>compile</scope>
             <optional>true</optional>
@@ -145,6 +142,13 @@
                     <groupId>org.jetbrains</groupId>
                 </exclusion>
             </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>me.block2block.hubparkour</groupId>
+            <artifactId>hubparkour-api</artifactId>
+            <version>2.6</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>

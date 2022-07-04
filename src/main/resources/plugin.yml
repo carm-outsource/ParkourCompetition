@@ -12,3 +12,8 @@ authors:
 
 softdepend:
   - PlaceholderAPI
+
+commands:
+  "ParkourCompetition":
+    description: "跑酷竞赛的主指令"
+    usage: "/ParkourCompetition"

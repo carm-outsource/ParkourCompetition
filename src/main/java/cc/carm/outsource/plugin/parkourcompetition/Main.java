@@ -3,8 +3,12 @@ package cc.carm.outsource.plugin.parkourcompetition;
 import cc.carm.lib.configuration.core.source.ConfigurationProvider;
 import cc.carm.lib.easyplugin.EasyPlugin;
 import cc.carm.lib.mineconfiguration.bukkit.MineConfiguration;
+import cc.carm.outsource.plugin.parkourcompetition.command.PluginCommand;
 import cc.carm.outsource.plugin.parkourcompetition.conf.PluginConfig;
 import cc.carm.outsource.plugin.parkourcompetition.conf.PluginMessages;
+import cc.carm.outsource.plugin.parkourcompetition.listener.FireworkListener;
+import cc.carm.outsource.plugin.parkourcompetition.listener.GameListener;
+import cc.carm.outsource.plugin.parkourcompetition.manager.ParkourManager;
 
 public class Main extends EasyPlugin {
 
@@ -13,6 +17,7 @@ public class Main extends EasyPlugin {
     protected ConfigurationProvider<?> configProvider;
     protected ConfigurationProvider<?> messageProvider;
 
+    protected ParkourManager parkourManager;
 
     @Override
     public boolean initialize() {
@@ -25,12 +30,14 @@ public class Main extends EasyPlugin {
         this.messageProvider = MineConfiguration.from(this, "messages.yml");
         this.messageProvider.initialize(PluginMessages.class);
 
+        log("加载监听器...");
+        registerListener(new GameListener(this));
+        registerListener(new FireworkListener(this));
+
+        log("加载指令...");
+        registerCommand("ParkourCompetition", new PluginCommand());
+
         return true;
-    }
-
-    @Override
-    protected void shutdown() {
-
     }
 
     @Override
@@ -60,6 +67,10 @@ public class Main extends EasyPlugin {
 
     public static void debugging(String... messages) {
         getInstance().debug(messages);
+    }
+
+    public static ParkourManager getParkourManager() {
+        return getInstance().parkourManager;
     }
 
 }

@@ -37,8 +37,43 @@ public class PluginMessages extends ConfigurationRoot {
         };
     }
 
-    public static final ConfiguredMessage<String> LOAD_FAILED = ConfiguredMessage.asString()
-            .defaults("&c您的用户数据未被正确加载，请重新进入！")
-            .build();
+
+    public static final class GAME {
+
+
+        public static final ConfiguredMessageList<BaseComponent[]> JOIN = list()
+                .defaults("&a&l参赛成功！&f您将在游戏开始时传送到对应比赛地点。")
+                .build();
+
+        public static final ConfiguredMessageList<BaseComponent[]> QUIT = list()
+                .defaults("&a&l退赛完成！&f请自行通过菜单 或 [&6点击这里](command=/c) &f离开准备区域。")
+                .build();
+
+        public static final ConfiguredMessageList<BaseComponent[]> FINISH = list()
+                .defaults("&e&l恭喜！&f您完成了本次跑酷比赛，总耗时 &6%(time)秒 &f，排名为 &6#%(index) &f！")
+                .params("time", "index").build();
+
+
+        public static final ConfiguredMessageList<BaseComponent[]> END = list()
+                .defaults(
+                        "&e&l比赛结束！&f比赛的前三名已经产生，分别是：",
+                        "  &8#%(p1_index) &6&l%(p1_name) &f用时 &6%(p1_time)秒",
+                        "  &8#%(p2_index) &6&l%(p2_name) &f用时 &6%(p2_time)秒",
+                        "  &8#%(p3_index) &6&l%(p3_name) &f用时 &6%(p3_time)秒",
+                        "&f未完成的也气馁，继续努力，我们仍有下次比赛哦~"
+                ).params(
+                        "p1_index", "p1_name", "p1_time",
+                        "p2_index", "p2_name", "p2_time",
+                        "p3_index", "p3_name", "p3_time"
+                ).build();
+
+    }
+
+    public static final class FIREWORK {
+
+        public static final ConfiguredMessageList<BaseComponent[]> IN_COOLDOWN = list()
+                .defaults("&f您需要等待 &c%(cooldown) &f秒才能再次发射烟花哦~")
+                .params("cooldown").build();
+    }
 
 }
