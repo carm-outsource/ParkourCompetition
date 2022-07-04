@@ -30,6 +30,9 @@ public class Main extends EasyPlugin {
         this.messageProvider = MineConfiguration.from(this, "messages.yml");
         this.messageProvider.initialize(PluginMessages.class);
 
+        log("初始化跑酷管理器...");
+        this.parkourManager = new ParkourManager();
+
         log("加载监听器...");
         registerListener(new GameListener(this));
         registerListener(new FireworkListener(this));
