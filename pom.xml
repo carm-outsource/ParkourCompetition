@@ -10,7 +10,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
 
-        <easyplugin.version>1.4.8</easyplugin.version>
+        <easyplugin.version>1.4.10</easyplugin.version>
         <mineconfig.version>2.0.2</mineconfig.version>
         <easylistener.version>2.0.0</easylistener.version>
         <minedown.version>1.7.1-SNAPSHOT</minedown.version>
@@ -134,7 +134,7 @@
         <dependency>
             <groupId>me.clip</groupId>
             <artifactId>placeholderapi</artifactId>
-            <version>2.11.1</version>
+            <version>2.11.2</version>
             <scope>provided</scope>
             <exclusions>
                 <exclusion>
