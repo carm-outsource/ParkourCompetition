@@ -12,7 +12,7 @@
 
         <easyplugin.version>1.4.12</easyplugin.version>
         <mineconfig.version>2.0.2</mineconfig.version>
-        <easylistener.version>2.0.0</easylistener.version>
+        <easylistener.version>2.0.1</easylistener.version>
         <minedown.version>1.7.1-SNAPSHOT</minedown.version>
 
         <project.code.package>${project.groupId}.plugin.${project.artifactId}</project.code.package>
